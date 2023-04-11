@@ -1,12 +1,25 @@
-import { type NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { type NextPage } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
-import { api } from "../utils/api";
+import { api } from '../utils/api';
+
+import { Jobs, Job } from './job';
+
+const jobs = [
+  {
+    title: 'Software developer',
+    description: 'Develop awesome applications.',
+  },
+  {
+    title: 'Manager',
+    description: 'Manage a team.',
+  },
+];
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const hello = api.example.hello.useQuery({ text: 'from tRPC' });
 
   return (
     <>
@@ -46,9 +59,12 @@ const Home: NextPage = () => {
           </div>
           <div className="flex flex-col items-center gap-2">
             <p className="text-2xl text-white">
-              {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+              {hello.data ? hello.data.greeting : 'Loading tRPC query...'}
             </p>
             <AuthShowcase />
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <Jobs jobs={jobs} />
           </div>
         </div>
       </main>
@@ -63,7 +79,7 @@ const AuthShowcase: React.FC = () => {
 
   const { data: secretMessage } = api.example.getSecretMessage.useQuery(
     undefined, // no input
-    { enabled: sessionData?.user !== undefined },
+    { enabled: sessionData?.user !== undefined }
   );
 
   return (
@@ -76,7 +92,7 @@ const AuthShowcase: React.FC = () => {
         className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
         onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
-        {sessionData ? "Sign out" : "Sign in"}
+        {sessionData ? 'Sign out' : 'Sign in'}
       </button>
     </div>
   );

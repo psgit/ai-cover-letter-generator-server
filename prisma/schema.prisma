@@ -85,6 +85,7 @@ model Resume {
 model Job {
     id                 String   @id @default(cuid())
     title              String
+    jobUrl             String
     description        String
     tags               String
     createdAt DateTime @default(now())
