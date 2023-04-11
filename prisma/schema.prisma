@@ -64,3 +64,42 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model OpenAIConfiguration {
+    id             String   @id @default(cuid())
+    name           String?
+    apiModel       String
+    apiMaxTokens   Int @default(500) 
+    apiTemperature Decimal @default(0.4)
+}
+
+model Resume {
+    id             String   @id @default(cuid())
+    userId         String
+    name           String
+    skills         String
+    jobExperience  String?
+    user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Job {
+    id                 String   @id @default(cuid())
+    title              String
+    description        String
+    tags               String
+    createdAt DateTime @default(now())
+}
+
+model JobApplication {
+    id             String   @id @default(cuid())
+    userId         String
+    jobId          String
+    resumeId       String
+    coverLetter    String
+    createdAt      DateTime @default(now())
+    user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    job            Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+    resume         Resume   @relation(fields: [resumeId], references: [id], onDelete: Cascade)   
+}
+
+
