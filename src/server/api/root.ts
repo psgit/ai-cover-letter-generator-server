@@ -1,7 +1,7 @@
 import { createTRPCRouter } from "./trpc";
 import { exampleRouter } from "./routers/example";
 import { jobRouter } from "./routers/job";
-import { openaiConfigurationRouter } from "./routers/openaiConfiguration";
+import { openaiConfigurationRouter } from "./routers/openaiConfiguratiom";
 
 /**
  * This is the primary router for your server.

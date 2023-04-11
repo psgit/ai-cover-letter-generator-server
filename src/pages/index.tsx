@@ -5,9 +5,9 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 
 import { api } from '../utils/api';
 
-import { Jobs, Job } from './job';
+import { Job, JobsComponent, JobComponent } from './job';
 
-const jobs = [
+const jobs: Job[] = [
   {
     title: 'Software developer',
     description: 'Develop awesome applications.',
@@ -64,7 +64,7 @@ const Home: NextPage = () => {
             <AuthShowcase />
           </div>
           <div className="flex flex-col items-center gap-2">
-            <Jobs jobs={jobs} />
+            JobsComponent(jobs)
           </div>
         </div>
       </main>

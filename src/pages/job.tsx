@@ -1,24 +1,19 @@
-import { React } from 'next';
-
-const Job: React.FC = (job) => {
-  return (
-    <div>
-      <div>{job.title}</div>
-      <div>{job.description}</div>
-    </div>
-  );
+export type Job = {
+  title: string;
+  description: string;
 };
 
-export default Job;
-
-const Jobs: React.FC = (jobs) => {
-  return (
-    <ul>
-      {jobs.map((job) => (
-        <li>{job.title}</li>
-      ))}
-    </ul>
-  );
+export const JobComponent = (props: { job: Job }) => {
+  <div>
+    <div>{props.job.title}</div>
+    <div>{props.job.description}</div>
+  </div>;
 };
 
-export default Jobs;
+export const JobsComponent = (props: { jobs: Job[] }) => {
+  <ul>
+    {props.jobs.map((job) => (
+      <li>{job.title}</li>
+    ))}
+  </ul>;
+};
