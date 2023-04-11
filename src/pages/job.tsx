@@ -1,13 +1,15 @@
 import { React } from 'next';
 
-export default function Job({ job }) {
+const Job: React.FC = (job) => {
   return (
     <div>
       <div>{job.title}</div>
       <div>{job.description}</div>
     </div>
   );
-}
+};
+
+export default Job;
 
 const Jobs: React.FC = (jobs) => {
   return (
@@ -17,7 +19,6 @@ const Jobs: React.FC = (jobs) => {
       ))}
     </ul>
   );
-}
+};
 
 export default Jobs;
-
