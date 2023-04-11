@@ -92,6 +92,7 @@ model Job {
     description        String
     tags               String
     createdAt DateTime @default(now())
+    jobApplications    JobApplication[]
 }
 
 model JobApplication {
