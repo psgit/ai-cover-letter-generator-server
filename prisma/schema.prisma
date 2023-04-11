@@ -76,12 +76,13 @@ model OpenAIConfiguration {
 }
 
 model Resume {
-    id             String   @id @default(cuid())
-    userId         String
-    name           String
-    skills         String
-    jobExperience  String?
-    user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    id              String   @id @default(cuid())
+    userId          String
+    name            String
+    skills          String
+    jobExperience   String?
+    user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    jobApplications JobApplication[]
 }
 
 model Job {
